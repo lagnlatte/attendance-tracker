@@ -1,0 +1,30 @@
+#sign-up-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    height: 90vh;
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#inputs .info {
+    text-align: end;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#sign-in {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}

@@ -1,0 +1,10 @@
+#content {
+    justify-content: start;
+    gap: 40px;
+}
+
+#attendance {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/RoleTab.css"
 
-function RoleTab( {onChange} ) {
+function RoleTab() {
     const [selectedRole, setSelectedRole] = useState("participant");
 
     const handleSelect = (role) => {

@@ -1,0 +1,7 @@
+#dropdown {
+    position: absolute;
+    width: 160px;
+    right: 20px;
+    border: 1px solid #D9D9D9;
+    user-select: none;
+}

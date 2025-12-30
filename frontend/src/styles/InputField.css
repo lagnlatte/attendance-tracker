@@ -9,3 +9,8 @@ input {
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(228, 229, 231, 0.24);
 }
+
+input:disabled {
+    background-color: #E2E2E2;
+    color: #716B6B;
+}

@@ -1,8 +1,8 @@
 import "../styles/Button.css"
 
-function Button({ text, onClick }) {
+function Button({ text, onClick, color = "#1D61E7" }) {
     return (
-        <button onClick={onClick}>{text}</button>
+        <button onClick={onClick} style={{ backgroundColor: color}}>{text}</button>
     )
 }
 

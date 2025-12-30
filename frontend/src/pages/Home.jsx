@@ -3,6 +3,7 @@ import Navbar from "../components/navbar/NavBar"
 import InputField from "../components/InputField"
 import Button from "../components/Button"
 import "../styles/Home.css"
+import QRText from '../components/QRText'
 
 function Home() {
     const navigate = useNavigate();
@@ -13,12 +14,12 @@ function Home() {
             <div id="attendance">
                     <div id="headline">
                         <h1>Confirm attendance</h1>
-                        <p className="grey-text">Scan the QR code provided by host or enter the event code below</p>
+                        <QRText />
                     </div>
                     <div id="inputs">
                         <InputField label="Event Code" type="text" placeholder="022884"/>
                         <Button text="Confirm" onClick={() => navigate("/confirm")}></Button>
-                        <Button text="Scan QR code" onClick={() => navigate("/home")}></Button>
+                        <Button showOnMobile={true} text="Scan QR code" onClick={() => navigate("/home")}></Button>
                     </div>
             </div>
         </div>

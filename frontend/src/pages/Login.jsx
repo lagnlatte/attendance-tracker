@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Button from "../components/Button"
 import InputField from "../components/InputField"
 import RoleTab from "../components/RoleTab"
@@ -38,7 +39,7 @@ function Login() {
                 </div>
             </div>
             <div id="sign-up">
-                <p id="sign-up-text" className="grey-text">Don't have an account?<a href="/" className="info">Sign Up</a></p>
+                <p id="sign-up-text" className="grey-text">Don't have an account?<Link to="/signup" className="info">Sign Up</Link></p>
             </div>
         </div>
     )

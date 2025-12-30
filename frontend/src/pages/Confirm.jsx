@@ -9,7 +9,7 @@ function Confirm() {
     const navigate = useNavigate();
 
     return (
-        <div className="content">
+        <div className="content content-home">
             <Navbar />
             <div id="confirm">
                     <div id="headline">

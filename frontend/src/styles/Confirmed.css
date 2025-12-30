@@ -1,0 +1,9 @@
+#event p{
+    margin: 0;
+}
+
+#confirm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

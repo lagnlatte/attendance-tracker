@@ -5,7 +5,7 @@ import Button from "../components/Button"
 import "../styles/Home.css"
 import "../styles/Confirm.css"
 
-function Content() {
+function Confirm() {
     const navigate = useNavigate();
 
     return (
@@ -16,9 +16,9 @@ function Content() {
                         <h1>Did we get it right?</h1>
                     </div>
                     <div id="inputs">
-                        <InputField label="Event Name" type="text" value="Web Tech Lecture" disabled="true"/>
+                        <InputField label="Event Name" type="text" value="Web Tech Lecture" disabled={true}/>
                         <div id="buttons">
-                            <Button text="Continue" onClick={() => navigate("/confirm")}></Button>
+                            <Button text="Continue" onClick={() => navigate("/confirmed")}></Button>
                             <Button color="#FA0D11" text="Cancel" onClick={() => navigate("/home")}></Button>
                         </div>
                     </div>
@@ -27,4 +27,4 @@ function Content() {
     )
 }
 
-export default Content
+export default Confirm

@@ -1,0 +1,39 @@
+.icon-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-title p {
+    margin: 0;
+}
+
+.card-heading {
+    font-weight: 600;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.card-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6C7278;
+    margin: 0;
+}
+
+.card-text span {
+    color: #2CAD1B;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.small-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 20px 40px 20px 20px;
+    flex: 1;
+}

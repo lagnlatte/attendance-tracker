@@ -1,29 +1,30 @@
-.big-card {
+.bigCard {
     display: flex;
     flex-direction: column;
     border: 1px solid #D9D9D9;
     border-radius: 12px;
     padding: 20px 40px 20px 20px;
     flex: 2;
+    gap: 20px;
 }
 
-.big-card table {
+.bigCard table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.big-card tbody tr {
+.bigCard tbody tr {
   border-top: 1px solid #D9D9D9;
 }
 
-.big-card td {
+.bigCard td {
   padding: 14px 0;
   font-size: 14px;
   color: #111827;
   vertical-align: middle;
 }
 
-.big-card thead th {
+.bigCard thead th {
   color: #6C7278;
   font-weight: 400;
   text-align: left;
@@ -36,7 +37,7 @@
   align-items: center;
 }
 
-.view-btn {
+.viewBtn {
   background: #2563EB;
   color: white;
   border: none;
@@ -46,7 +47,7 @@
   cursor: pointer;
 }
 
-.share-btn {
+.shareBtn {
   background: #2CAD1B;
   color: white;
   border: none;
@@ -68,6 +69,21 @@
   color: #DC2626;
 }
 
-.big-card h1 {
+.bigCard h1 {
   font-weight: 600;
+  font-size: 26px;
+}
+
+@media (max-width: 825px) {
+  .hide {
+    display: none;
+  }
+
+  .bigCard h1 {
+    font-size: 20px;
+  }
+
+  .bigCard thead th {
+    font-size: 12px;
+  }
 }

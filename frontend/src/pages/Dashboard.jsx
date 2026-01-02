@@ -1,12 +1,12 @@
 import Navbar from "../components/navbar/NavBar"
-import "../styles/Dashboard.css"
-import SmallCard from '../components/dashboard/SmallCard';
+import styles from "../styles/Dashboard.module.css"
+import DashboardSmallCard from '../components/dashboard/DashboardSmallCard';
 import BooksIcon from "../assets/books.svg?react"
 import CalendarIcon from "../assets/calendar.svg?react"
 import CheckedIcon from "../assets/checked.svg?react"
 import PeopleIcon from "../assets/people.svg?react"
-import BigCard from '../components/dashboard/BigCard';
-import MediumCard from '../components/dashboard/MediumCard';
+import DashboardBigCard from '../components/dashboard/DashboardBigCard';
+import DashboardMediumCard from '../components/dashboard/DashboardMediumCard';
 
 function Dashboard() {
     // mock data for Live/Past Sessions
@@ -50,42 +50,42 @@ function Dashboard() {
 
 
     return (
-        <div className="content content-home">
+        <div className={styles.content}>
             <Navbar />
-            <div id="dashboard">
-                <div id="heading">
+            <div className={styles.container}>
+                <div className={styles.heading}>
                     <h1>Welcome back, Alexandra!</h1>
                     <p className="grey-text">Here's what's happening today</p>
                 </div>
-                <div id="first-row">
-                    <SmallCard
+                <div className={styles.firstRow}>
+                    <DashboardSmallCard
                         Icon={CheckedIcon}
                         title="Active Events"
                         heading="1 event"
                         text={ <>currently <span id="open">open</span></> }
                     />
-                    <SmallCard
+                    <DashboardSmallCard
                         Icon={CalendarIcon}
                         title="Today's Sessions"
                         heading="2 sessions"
                         text="left"
                     />
-                    <SmallCard
+                    <DashboardSmallCard
                         Icon={PeopleIcon}
                         title="Total Participants"
                         heading="169 check-ins"
                         text="today"
                     />
-                    <SmallCard
+                    <DashboardSmallCard
                         Icon={BooksIcon}
                         title="Event Groups"
                         heading="7 groups"
                         text="ongoing"
                     />             
                 </div>
-                <div id="second-row">
-                    <BigCard sessions={sessions}/>
-                    <MediumCard sessions={upcomingSessions}/>
+                <div className={styles.secondRow}>
+                    <DashboardBigCard sessions={sessions}/>
+                    <DashboardMediumCard sessions={upcomingSessions}/>
                 </div>  
             </div>
         </div>

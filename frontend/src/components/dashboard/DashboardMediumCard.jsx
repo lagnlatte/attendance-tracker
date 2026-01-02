@@ -1,8 +1,8 @@
-import "../../styles/MediumCard.css"
+import styles from "../../styles/DashboardMediumCard.module.css"
 
-function MediumCard( {sessions} ) {
+function DashboardMediumCard( {sessions} ) {
     return (
-        <div className="medium-card">
+        <div className={styles.mediumCard}>
             <h1>Upcoming</h1>
             <table>
                 <thead>
@@ -24,4 +24,4 @@ function MediumCard( {sessions} ) {
     )
 }
 
-export default MediumCard
+export default DashboardMediumCard

@@ -1,6 +1,6 @@
 import "../../styles/SmallCard.css"
 
-function SmallCard( {Icon, title, heading, text}) {
+function SmallCard( {Icon, title, heading, text} ) {
     return (
         <div className="small-card">
             <div className="icon-title">

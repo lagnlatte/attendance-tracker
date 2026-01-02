@@ -1,0 +1,73 @@
+.big-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 20px 40px 20px 20px;
+    flex: 2;
+}
+
+.big-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.big-card tbody tr {
+  border-top: 1px solid #D9D9D9;
+}
+
+.big-card td {
+  padding: 14px 0;
+  font-size: 14px;
+  color: #111827;
+  vertical-align: middle;
+}
+
+.big-card thead th {
+  color: #6C7278;
+  font-weight: 400;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.view-btn {
+  background: #2563EB;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.share-btn {
+  background: #2CAD1B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.open {
+  color: #2CAD1B;
+}
+
+.status.closed {
+  color: #DC2626;
+}
+
+.big-card h1 {
+  font-weight: 600;
+}

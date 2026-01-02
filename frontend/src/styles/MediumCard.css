@@ -1,0 +1,44 @@
+.medium-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 20px 40px 20px 20px;
+    flex: 1;
+}
+
+.medium-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medium-card tbody tr {
+  border-top: 1px solid #D9D9D9;
+}
+
+.medium-card td {
+  padding: 25px 0;
+  font-size: 14px;
+  color: #111827;
+  vertical-align: middle;
+}
+
+.medium-card thead th {
+  color: #6C7278;
+  font-weight: 400;
+  text-align: left;
+}
+
+.medium-card h1 {
+  font-weight: 600;
+}
+
+.medium-card th:nth-child(1),
+.medium-card td:nth-child(1) {
+  text-align: left;
+}
+
+.medium-card th:nth-child(2),
+.medium-card td:nth-child(2) {
+  text-align: right;
+}

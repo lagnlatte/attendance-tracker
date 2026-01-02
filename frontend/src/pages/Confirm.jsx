@@ -16,7 +16,7 @@ function Confirm() {
                     </div>
                     <div className={styles.inputs}>
                         <InputField label="Event Name" type="text" value="Web Tech Lecture" disabled={true}/>
-                        <div id="buttons">
+                        <div className={styles.buttons}>
                             <Button text="Continue" onClick={() => navigate("/confirmed")}></Button>
                             <Button color="#FA0D11" text="Cancel" onClick={() => navigate("/home")}></Button>
                         </div>

@@ -1,14 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useContext } from 'react'
 import Button from "../components/Button"
 import InputField from "../components/InputField"
 import RoleTab from "../components/RoleTab"
 import "../styles/Login.css"
 import Logo from "../components/Logo"
+import { UserContext } from '../context/UserContext'
 
 function Login() {
     const navigate = useNavigate();
-    const [role, setRole] = useState("participant");
+    const { role, setRole } = useContext(UserContext);
 
     const handleLogin = () => {
         if (role === "participant") {

@@ -13,6 +13,14 @@
     flex: 1;
 }
 
+.firstRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
 .secondRow {
     display: flex;
     justify-content: space-between;
@@ -28,6 +36,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
+    margin-bottom: 40px;
 }
 
 .content {
@@ -53,4 +62,10 @@
 
 .heading p, h1 {
     margin: 0;
+}
+
+@media (max-width: 825px) {
+  .firstRow {
+    flex-direction: column;
+  }
 }

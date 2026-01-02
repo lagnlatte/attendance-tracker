@@ -1,9 +1,0 @@
-#buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-}
-
-.cancel {
-    background-color: red;
-}

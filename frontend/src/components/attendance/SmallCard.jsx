@@ -1,12 +1,12 @@
-import "../../styles/AttendanceSmallCard.css"
+import styles from "../../styles/SmallCard.module.css"
 
 function SmallCard({ Icon, title, text }) {
     return (
-        <div className="small-card">
+        <div className={styles.smallCard}>
             <Icon />
-            <div className="card-content">
-                <p className="card-title">{title}</p>
-                <p className="card-text">{text}</p>
+            <div className={styles.content}>
+                <p className={styles.title}>{title}</p>
+                <p className={styles.text}>{text}</p>
             </div>
         </div>
     )

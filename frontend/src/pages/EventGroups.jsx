@@ -65,7 +65,7 @@ function EventGroups() {
                     <h1>Event Groups</h1>
                     <p className="grey-text">Manage and track attendance across all your event groups</p>
                 </div>
-                <div id="first-row">
+                <div className={styles.firstRow}>
                     <SmallCard
                         Icon={ToDoIcon}
                         title="Total Event Groups"

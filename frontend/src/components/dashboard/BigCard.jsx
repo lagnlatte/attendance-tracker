@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom"
 import "../../styles/BigCard.css"
 
 function BigCard( {sessions} ) {
+    const navigate = useNavigate();
+    
+    const handleShare = (sessionId) => navigate("/share");
+
     return (
         <div className="big-card">
             <h1>Live/Past Sessions</h1>
@@ -29,7 +34,7 @@ function BigCard( {sessions} ) {
                                 <div className="actions">
                                     <button className="view-btn">View</button>
                                     {session.status === "OPEN" && (
-                                        <button className="share-btn">Share</button>
+                                        <button className="share-btn" onClick={() => handleShare(session.id)}>Share</button>
                                     )}
                                 </div>
                             </td>

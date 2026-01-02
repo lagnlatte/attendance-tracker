@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Confirm from './pages/Confirm'
 import Confirmed from './pages/Confirmed'
 import Dashboard from './pages/Dashboard'
+import ShareSession from './pages/ShareSession'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Route path="/confirm" element={<Confirm />}></Route>
       <Route path="/confirmed" element={<Confirmed />}></Route>
       <Route path="/dashboard" element={<Dashboard />}></Route>
+      <Route path="/share" element={<ShareSession />}></Route>
     </Routes>
   )
 }

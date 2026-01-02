@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom'
 import Navbar from "../components/navbar/NavBar"
-import Button from "../components/Button"
 import "../styles/Dashboard.css"
 import SmallCard from '../components/dashboard/SmallCard';
 import BooksIcon from "../assets/books.svg?react"
@@ -11,8 +9,6 @@ import BigCard from '../components/dashboard/BigCard';
 import MediumCard from '../components/dashboard/MediumCard';
 
 function Dashboard() {
-    const navigate = useNavigate();
-
     // mock data for Live/Past Sessions
     const sessions = [
         {

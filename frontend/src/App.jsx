@@ -6,6 +6,7 @@ import Confirm from './pages/Confirm'
 import Confirmed from './pages/Confirmed'
 import Dashboard from './pages/Dashboard'
 import ShareSession from './pages/ShareSession'
+import ViewEventGroup from './pages/ViewEventGroup'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/confirmed" element={<Confirmed />}></Route>
       <Route path="/dashboard" element={<Dashboard />}></Route>
       <Route path="/share" element={<ShareSession />}></Route>
+      <Route path="/view" element={<ViewEventGroup />}></Route>
     </Routes>
   )
 }

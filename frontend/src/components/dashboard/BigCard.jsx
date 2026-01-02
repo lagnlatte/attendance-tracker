@@ -5,6 +5,7 @@ function BigCard( {sessions} ) {
     const navigate = useNavigate();
     
     const handleShare = (sessionId) => navigate("/share");
+    const handleView = (sessionId) => navigate("/view");
 
     return (
         <div className="big-card">
@@ -32,7 +33,7 @@ function BigCard( {sessions} ) {
                             <td>{session.attendance}</td>
                             <td>
                                 <div className="actions">
-                                    <button className="view-btn">View</button>
+                                    <button className="view-btn" onClick={() => handleView(session.id)}>View</button>
                                     {session.status === "OPEN" && (
                                         <button className="share-btn" onClick={() => handleShare(session.id)}>Share</button>
                                     )}

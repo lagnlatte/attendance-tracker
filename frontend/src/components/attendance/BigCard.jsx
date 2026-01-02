@@ -1,4 +1,4 @@
-import "../../styles/AttendanceMediumCard.css"
+import "../../styles/AttendanceBigCard.css"
 import SmallCalendarIcon from "../../assets/small-calendar.svg?react"
 import EmailIcon from "../../assets/email.svg?react"
 import ClockIcon from "../../assets/clock.svg?react"
@@ -11,14 +11,14 @@ function BigCard({ session }) {
             </div>
         );
     }
-    
+
     return (
-        <div className="big-card">
-            <div className="sessions-heading">
+        <div className="big-card-attendance">
+            <div className="session-heading">
                 <div className="session-name">
                     <p>{session.eventName + " - Session " + session.id}</p>
                 </div>
-                <div className="session-details">
+                <div className="session-details attendance-details">
                     <div className="session-date">
                         <SmallCalendarIcon />
                         <span>{session.date}</span>
@@ -32,7 +32,7 @@ function BigCard({ session }) {
             </div>
             <table>
                 <thead>
-                    <tr>
+                    <tr className="table-header">
                         <th>Attendee</th>
                         <th>Email</th>
                         <th>Check-in time</th>
@@ -40,23 +40,23 @@ function BigCard({ session }) {
                 </thead>
                 <tbody>
                     {session.attendees.map((participant) => (
-                        <tr key={participant.id}>
+                        <tr key={participant.id} className="attendee">
                             <td>
-                                <div className="name-col">
+                                <div className="attendee-col">
                                     <div id="avatar">{participant.name.charAt(0)}</div>
-                                    {participant.name}
+                                    <p>{participant.name}</p>
                                 </div>
                             </td>
                             <td>
-                                <div className="email-col">
+                                <div className="attendee-col">
                                     <EmailIcon />
-                                    {participant.email}
+                                    <p className="grey-text">{participant.email}</p>
                                 </div>
                             </td>
                             <td>
-                                <div className="time-col">
+                                <div className="attendee-col">
                                     <ClockIcon />
-                                    {participant.checkIn}
+                                    <p className="grey-text">{participant.checkIn}</p>
                                 </div>
                             </td>
                         </tr>

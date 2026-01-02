@@ -1,0 +1,36 @@
+.content {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.signUp {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.heading p {
+    margin: 0;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

@@ -1,0 +1,44 @@
+.heading {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.container p {
+    margin: 0;
+}
+
+.content {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.eventCode {
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+}
+
+.qrCode {
+    background-color: #E2E2E2;
+    height: 200px;
+    width: 200px;
+}

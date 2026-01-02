@@ -9,10 +9,10 @@ nav {
 }
 
 .host-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
 }
 
 .links {
@@ -22,10 +22,10 @@ nav {
 }
 
 .menu-link {
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .create-btn {

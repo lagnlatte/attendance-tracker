@@ -1,5 +1,5 @@
 import Navbar from "../components/navbar/NavBar"
-import "../styles/Dashboard.css"
+import "../styles/Attendance.css"
 import SmallCard from '../components/attendance/SmallCard';
 import ToDoIcon from "../assets/todolist.svg?react"
 import CalendarIcon from "../assets/calendar-2.svg?react"

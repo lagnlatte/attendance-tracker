@@ -13,7 +13,7 @@ function MediumCard({ sessions, selectedSessions, setSelectedSessions, activeSes
     };
 
     return (
-        <div className="medium-card">
+        <div className="attendance-medium-card">
             <div className="sessions-heading">
                 <h1>All Sessions</h1>
                 <p className="grey-text">Select a session to view attendees</p>

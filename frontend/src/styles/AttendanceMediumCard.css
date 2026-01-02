@@ -26,6 +26,7 @@
     border: 1px solid #D9D9D9;
     gap: 7px;
     padding: 20px 20px;
+    cursor: pointer;
 }
 
 .session-details {
@@ -65,4 +66,13 @@
 .session-details .open {
     color: #2CAD1B;
     font-weight: 600;
+}
+
+.attendance-medium-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    padding: 20px 40px 20px 20px;
+    flex: 1;
 }

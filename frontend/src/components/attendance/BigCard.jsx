@@ -13,7 +13,7 @@ function BigCard({ session }) {
     }
 
     return (
-        <div className="big-card-attendance">
+        <div className="attendance-big-card">
             <div className="session-heading">
                 <div className="session-name">
                     <p>{session.eventName + " - Session " + session.id}</p>

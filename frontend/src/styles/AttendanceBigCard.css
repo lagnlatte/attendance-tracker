@@ -10,7 +10,7 @@
     border-top: 1px solid #E5E7EB;
 }
 
-.big-card-attendance {
+.attendance-big-card {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -20,11 +20,11 @@
     flex: 2;
 }
 
-.big-card-attendance table {
+.attendance-big-card table {
     border-collapse: collapse;
 }
 
-.big-card-attendance table th, td {
+.attendance-big-card table th, td {
     padding: 12px;
 }
 

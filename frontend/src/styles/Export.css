@@ -1,0 +1,28 @@
+.export-container {
+    background-color: #DBEBFF;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #BEDBFF;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.export-container p {
+    color: #1C398E;
+    font-size: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    gap: 10px;
+}
+
+@media (max-width: 825px) {
+  .buttons {
+    flex-direction: column;
+  }
+}

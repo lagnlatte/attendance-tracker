@@ -1,0 +1,68 @@
+.sessions-heading h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.sessions-heading p {
+    margin: 0;
+}
+
+.sessions-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 20px;
+}
+
+.session-name {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.session {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #D9D9D9;
+    gap: 7px;
+    padding: 20px 20px;
+}
+
+.session-details {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding-left: 28px;
+}
+
+.session-name input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #1D61E7;
+}
+
+.session-attendees {
+    padding-left: 28px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.session-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.session-details span {
+    color: #4A5565;
+}
+
+.session-attendees span {
+    color: #4A5565;
+}
+
+.session-details .open {
+    color: #2CAD1B;
+    font-weight: 600;
+}

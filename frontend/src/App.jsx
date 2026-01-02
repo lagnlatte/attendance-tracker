@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import ShareSession from './pages/ShareSession'
 import ViewEventGroup from './pages/ViewEventGroup'
 import CreateEventGroup from './pages/CreateEventGroup'
+import Attendance from './pages/Attendance'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Route path="/share" element={<ShareSession />}></Route>
       <Route path="/view" element={<ViewEventGroup />}></Route>
       <Route path="/create" element={<CreateEventGroup />}></Route>
+      <Route path="/attendance" element={<Attendance />}></Route>
     </Routes>
   )
 }

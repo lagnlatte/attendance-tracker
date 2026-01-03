@@ -14,3 +14,12 @@ input:disabled {
     background-color: #E2E2E2;
     color: #716B6B;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+input[type="time"] {
+    font-family: "Inter";
+}

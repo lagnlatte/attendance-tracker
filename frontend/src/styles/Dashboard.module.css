@@ -40,6 +40,17 @@
     gap: 2em;
 }
 
+.flashMessage {
+  position: fixed;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 1000;
+  background-color: #2CAD1B;
+  color: #FFF;
+  top: 70px;
+}
+
 @media (max-width: 825px) {
   .firstRow, .secondRow {
     flex-direction: column;

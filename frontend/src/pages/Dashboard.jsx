@@ -7,8 +7,27 @@ import CheckedIcon from "../assets/checked.svg?react"
 import PeopleIcon from "../assets/people.svg?react"
 import DashboardBigCard from '../components/dashboard/DashboardBigCard';
 import DashboardMediumCard from '../components/dashboard/DashboardMediumCard';
+import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 function Dashboard() {
+    const location = useLocation();
+    const [flashMessage, setFlashMessage] = useState("")
+
+    // display a message after deleting an event group
+    useEffect(() => {
+        if (location.state?.message) {
+            setFlashMessage(location.state.message);
+
+            // message only lasts 3 seconds
+            const timer = setTimeout(() => {
+                setFlashMessage("");
+            }, 3000)
+
+            return () => clearTimeout(timer);
+        }
+    }, [location.state])
+
     // mock data for Live/Past Sessions
     const sessions = [
         {
@@ -52,6 +71,9 @@ function Dashboard() {
     return (
         <div className={styles.content}>
             <Navbar />
+            {flashMessage && (
+                <div className={styles.flashMessage}>{flashMessage}</div>
+            )}
             <div className={styles.container}>
                 <div className={styles.heading}>
                     <h1>Welcome back, Alexandra!</h1>

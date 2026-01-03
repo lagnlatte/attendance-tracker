@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
 import Navbar from "../components/navbar/NavBar"
 import styles from "../styles/EventGroups.module.css"
 import SmallCard from '../components/attendance/SmallCard';
@@ -12,6 +13,7 @@ import EventGroupCard from "../components/groups/EventGroupCard";
 
 function EventGroups() {
     const navigate = useNavigate();
+    const [search, setSearch] = useState("");
 
     // mock data for event groups
     const eventGroups = [
@@ -53,6 +55,14 @@ function EventGroups() {
         }
     ];
 
+    // filter event groups if search has value
+    const filteredGroups = search
+    ? eventGroups.filter(group =>
+        group.eventName.toLowerCase().includes(search.toLowerCase())
+    )
+    : eventGroups; // show all if search is empty
+
+
     const totalSessions = eventGroups.reduce((sum, e) => sum + e.sessions, 0);
     const totalSessionsCompleted = eventGroups.reduce((sum, e) => sum + e.sessionsCompleted, 0);
     const totalAttendees = eventGroups.reduce((sum, e) => sum + e.attendance, 0);
@@ -90,13 +100,14 @@ function EventGroups() {
                 <div className={styles.secondRow}>
                     <div className={styles.searchBar}>
                         <SearchIcon/>
-                        <input type="text" placeholder="Search event groups..."></input>
+                        <input type="text" placeholder="Search event groups..." value={search} onChange={(e) => setSearch(e.target.value)}></input>
                     </div>
                     <Button className={styles.createBtn} text={"Create event group"} onClick={() => navigate("/create")}/>
                 </div>
                 <div className={styles.thirdRow}>
-                    {eventGroups.map((group) => (
+                    {filteredGroups.map((group) => (
                         <EventGroupCard 
+                        key={group.id}
                         name={group.eventName}
                         sessionsCompleted={group.sessionsCompleted}
                         sessions={group.sessions}

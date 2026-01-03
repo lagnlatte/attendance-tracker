@@ -2,6 +2,7 @@ import styles from "../../styles/EventGroupCard.module.css"
 import ToDoIcon from "../../assets/todolist.svg?react"
 import CalendarIcon from "../../assets/small-calendar.svg?react"
 import PeopleIcon from "../../assets/small-people.svg?react"
+import { useNavigate } from "react-router-dom"
 
 function EventGroupCard({ name, sessionsCompleted, sessions, dateStarted, dateFinished, attendance }) {
     // calculate progress
@@ -14,6 +15,8 @@ function EventGroupCard({ name, sessionsCompleted, sessions, dateStarted, dateFi
         const day = parts[1].replace(",", ""); // "3"
         return `${month} ${day}`;
     }
+
+    const navigate = useNavigate();
 
     return (
         <div className={styles.eventGroup}>
@@ -48,7 +51,7 @@ function EventGroupCard({ name, sessionsCompleted, sessions, dateStarted, dateFi
                     </div>
                 </div>
             </div>
-            <div className={styles.thirdRow}>
+            <div className={styles.thirdRow} onClick={() => navigate("/view")}>
                     <p className={styles.blueText}>View Details →</p>
             </div>
         </div>

@@ -3,7 +3,6 @@
 body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    padding: 0;
 }
 
 * {
@@ -21,4 +20,9 @@ body {
     font-weight: 500;
     color: #4D81E7;
     text-decoration: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }

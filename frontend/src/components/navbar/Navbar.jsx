@@ -15,19 +15,21 @@ function Navbar() {
     
     return (
         <nav>
-            <Link to={logoTarget}><Logo /></Link>
+            <div className="navbar-container">
+                <Link to={logoTarget}><Logo /></Link>
 
-            { role === "host" ? (
-                <div className="host-menu">
-                    <div className="links">
-                        <Link to="/dashboard" className="menu-link hide">Dashboard</Link>
-                        <Link to="/event-groups" className="menu-link hide">Event Groups</Link>
+                { role === "host" ? (
+                    <div className="host-menu">
+                        <div className="links">
+                            <Link to="/dashboard" className="menu-link hide">Dashboard</Link>
+                            <Link to="/event-groups" className="menu-link hide">Event Groups</Link>
+                        </div>
+                        <Button className="create-btn hide" text="Create new event group" onClick={() => navigate("/create")}></Button>
                     </div>
-                    <Button className="create-btn hide" text="Create new event group" onClick={() => navigate("/create")}></Button>
-                </div>
-            ) : null}
+                ) : null}
 
-            <ProfileMenu />
+                <ProfileMenu />
+            </div>
         </nav>
     )
 }

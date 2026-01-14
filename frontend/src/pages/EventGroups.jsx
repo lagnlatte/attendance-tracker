@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Navbar from "../components/navbar/NavBar";
+import Navbar from "../components/navbar/Navbar";
 import styles from "../styles/EventGroups.module.css";
 import SmallCard from "../components/attendance/SmallCard";
 import ToDoIcon from "../assets/todolist.svg?react";

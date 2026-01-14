@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Navbar from "../components/navbar/NavBar";
+import Navbar from "../components/navbar/Navbar";
 import Button from "../components/Button";
 import styles from "../styles/Confirmed.module.css";
 import api from "../api/api";

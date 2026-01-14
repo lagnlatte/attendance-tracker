@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar/NavBar";
+import Navbar from "../components/navbar/Navbar";
 import Button from "../components/Button";
 import styles from "../styles/Attendance.module.css";
 import SmallCard from "../components/attendance/SmallCard";

@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar/NavBar";
+import Navbar from "../components/navbar/Navbar";
 import styles from "../styles/Dashboard.module.css";
 import DashboardSmallCard from "../components/dashboard/DashboardSmallCard";
 import BooksIcon from "../assets/books.svg?react";

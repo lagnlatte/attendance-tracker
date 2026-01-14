@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar/NavBar";
+import Navbar from "../components/navbar/Navbar";
 import styles from "../styles/ShareSession.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

@@ -1,14 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 
 export function UserProvider({ children }) {
-    // store role globally
-    const [role, setRole] = useState("participant");
+  const [role, setRole] = useState("participant");
 
-    return (
-        <UserContext.Provider value={{ role, setRole }}>
-        {children}
-        </UserContext.Provider>
-    );
+  useEffect(() => {
+    const userStr = localStorage.getItem("user");
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        if (user?.role) setRole(user.role);
+      } catch {
+        // ignore
+      }
+    }
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ role, setRole }}>
+      {children}
+    </UserContext.Provider>
+  );
 }

@@ -1,5 +1,40 @@
 const prisma = require("../db");
 
+function getLocalStartEnd(event) {
+  const d = new Date(event.date);
+
+  const [sh, sm] = event.startTime.split(":").map(Number);
+  const [eh, em] = event.endTime.split(":").map(Number);
+
+  // build start/end using LOCAL calendar day (avoids UTC shift)
+  const start = new Date(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate(),
+    sh,
+    sm,
+    0,
+    0
+  );
+  const end = new Date(
+    d.getFullYear(),
+    d.getMonth(),
+    d.getDate(),
+    eh,
+    em,
+    0,
+    0
+  );
+
+  return { start, end };
+}
+
+function computeStatus(event) {
+  const { start, end } = getLocalStartEnd(event);
+  const now = new Date();
+  return now >= start && now <= end ? "OPEN" : "CLOSED";
+}
+
 // POST /attendance/check-in, participant checks in using access code
 exports.checkIn = async (req, res) => {
   try {
@@ -17,16 +52,9 @@ exports.checkIn = async (req, res) => {
       return res.status(404).json({ error: "Invalid code" });
     }
 
-    // compute OPEN / CLOSED
+    // compute OPEN / CLOSED (timezone-safe)
+    const { start, end } = getLocalStartEnd(event);
     const now = new Date();
-    const start = new Date(event.date);
-    const end = new Date(event.date);
-
-    const [sh, sm] = event.startTime.split(":").map(Number);
-    const [eh, em] = event.endTime.split(":").map(Number);
-
-    start.setHours(sh, sm, 0, 0);
-    end.setHours(eh, em, 0, 0);
 
     if (now < start || now > end) {
       return res.status(403).json({ error: "Session is not open" });
@@ -62,11 +90,10 @@ exports.listForEventGroup = async (req, res) => {
       where: { eventGroupId: req.params.eventGroupId },
       orderBy: { date: "desc" },
       include: {
+        eventGroup: { select: { name: true } },
         attendances: {
           include: {
-            user: {
-              select: { id: true, name: true, email: true },
-            },
+            user: { select: { id: true, name: true, email: true } },
           },
         },
       },
@@ -74,10 +101,11 @@ exports.listForEventGroup = async (req, res) => {
 
     const result = sessions.map((s) => ({
       id: s.id,
+      eventName: s.eventGroup.name,
       date: s.date,
       startTime: s.startTime,
       endTime: s.endTime,
-      status: "CLOSED",
+      status: computeStatus(s), // dynamic OPEN/CLOSED
       attendance: s.attendances.length,
       attendees: s.attendances.map((a) => ({
         id: a.user.id,
@@ -88,7 +116,8 @@ exports.listForEventGroup = async (req, res) => {
     }));
 
     res.json(result);
-  } catch {
+  } catch (e) {
+    console.error(e);
     res.status(500).json({ error: "Server error" });
   }
 };

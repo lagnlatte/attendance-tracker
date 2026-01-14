@@ -25,7 +25,18 @@ exports.list = async (req, res) => {
 
     const groups = await prisma.eventGroup.findMany({
       where: { hostId: req.user.id },
-      include: { sessions: true },
+      include: {
+        sessions: {
+          select: {
+            id: true,
+            date: true,
+            startTime: true,
+            endTime: true,
+            status: true,
+            _count: { select: { attendances: true } },
+          },
+        },
+      },
       orderBy: { createdAt: "desc" },
     });
 
@@ -44,6 +55,11 @@ exports.list = async (req, res) => {
         .map((s) => new Date(s.date))
         .sort((a, b) => a - b);
 
+      const attendanceTotal = sessionsWithStatus.reduce(
+        (sum, s) => sum + (s._count?.attendances || 0),
+        0
+      );
+
       return {
         id: group.id,
         name: group.name,
@@ -54,6 +70,7 @@ exports.list = async (req, res) => {
         startTime: group.startTime,
         endTime: group.endTime,
         days: group.days,
+        attendanceTotal,
       };
     });
 

@@ -1,18 +1,18 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import SignUp from './pages/SignUp';
-import Home from './pages/Home';
-import Confirm from './pages/Confirm'
-import Confirmed from './pages/Confirmed'
-import Dashboard from './pages/Dashboard'
-import ShareSession from './pages/ShareSession'
-import ViewEventGroup from './pages/ViewEventGroup'
-import CreateEventGroup from './pages/CreateEventGroup'
-import Attendance from './pages/Attendance'
-import EventGroups from './pages/EventGroups'
+import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
+import Confirm from "./pages/Confirm";
+import Confirmed from "./pages/Confirmed";
+import Dashboard from "./pages/Dashboard";
+import ShareSession from "./pages/ShareSession";
+import ViewEventGroup from "./pages/ViewEventGroup";
+import CreateEventGroup from "./pages/CreateEventGroup";
+import Attendance from "./pages/Attendance";
+import EventGroups from "./pages/EventGroups";
+import ScanQR from "./pages/ScanQR";
 
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<Login />}></Route>
@@ -25,9 +25,13 @@ function App() {
       <Route path="/view" element={<ViewEventGroup />}></Route>
       <Route path="/create" element={<CreateEventGroup />}></Route>
       <Route path="/attendance" element={<Attendance />}></Route>
+      <Route path="/attendance/:eventGroupId" element={<Attendance />}></Route>
+      <Route path="/share/:sessionId" element={<ShareSession />} />
       <Route path="/event-groups" element={<EventGroups />}></Route>
+      <Route path="/event-groups/:id" element={<ViewEventGroup />}></Route>
+      <Route path="/scan" element={<ScanQR />}></Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;

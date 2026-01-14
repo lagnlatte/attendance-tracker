@@ -31,7 +31,8 @@ exports.exportCSV = async (req, res) => {
     res.header("Content-Type", "text/csv");
     res.attachment("attendance.csv");
     res.send(csv);
-  } catch {
+  } catch (e) {
+    console.error(e);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -79,7 +80,8 @@ exports.exportXLSX = async (req, res) => {
 
     await workbook.xlsx.write(res);
     res.end();
-  } catch {
+  } catch (e) {
+    console.error(e);
     res.status(500).json({ error: "Server error" });
   }
 };

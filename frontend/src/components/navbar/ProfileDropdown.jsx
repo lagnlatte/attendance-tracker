@@ -1,13 +1,24 @@
-import { Link } from 'react-router-dom'
-import "../../styles/ProfileDropdown.css"
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/ProfileDropdown.css";
 
 function ProfileDropdown() {
-    return (
-        <div id="dropdown">
-            <p>Alexandra Tomescu</p>
-            <Link to="/" className="info">Log out</Link>
-        </div>
-    )
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
+  return (
+    <div id="dropdown">
+      <p>{user?.name || "User"}</p>
+      <Link to="/" className="info">
+        Log out
+      </Link>
+    </div>
+  );
 }
 
-export default ProfileDropdown
+export default ProfileDropdown;

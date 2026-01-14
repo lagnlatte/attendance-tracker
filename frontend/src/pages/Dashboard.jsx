@@ -7,66 +7,85 @@ import CheckedIcon from "../assets/checked.svg?react";
 import PeopleIcon from "../assets/people.svg?react";
 import DashboardBigCard from "../components/dashboard/DashboardBigCard";
 import DashboardMediumCard from "../components/dashboard/DashboardMediumCard";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import Button from "../components/Button";
+import api from "../api/api";
 
 function Dashboard() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [flashMessage, setFlashMessage] = useState("");
 
-  // display a message after deleting an event group
+  const [groups, setGroups] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [upcomingSessions, setUpcomingSessions] = useState([]);
+
   useEffect(() => {
     if (location.state?.message) {
       setFlashMessage(location.state.message);
-
-      // message only lasts 3 seconds
-      const timer = setTimeout(() => {
-        setFlashMessage("");
-      }, 3000);
-
+      const timer = setTimeout(() => setFlashMessage(""), 3000);
       return () => clearTimeout(timer);
     }
   }, [location.state]);
 
-  // mock data for Live/Past Sessions
-  const sessions = [
-    {
-      id: 1,
-      eventName: "Web Tech Lecture",
-      time: "16:30 – 17:50",
-      status: "OPEN",
-      attendance: "68",
-    },
-    {
-      id: 2,
-      eventName: "Web Tech Seminar - 1098",
-      time: "15:00 – 16:20",
-      status: "CLOSED",
-      attendance: "21",
-    },
-    {
-      id: 3,
-      eventName: "Web Tech Seminar - 1097",
-      time: "13:30 – 14:50",
-      status: "CLOSED",
-      attendance: "23",
-    },
-  ];
+  useEffect(() => {
+    (async () => {
+      const res = await api.get("/event-groups");
+      setGroups(res.data);
 
-  // mock data for Upcoming Sessions
-  const upcomingSessions = [
-    {
-      id: 4,
-      eventName: "Web Tech Seminar - 1091",
-      time: "18:00 – 19:20",
-    },
-    {
-      id: 5,
-      eventName: "Web Tech Seminar - 1092",
-      time: "19:30 – 21:00",
-    },
-  ];
+      // load sessions for first group
+      if (res.data.length > 0) {
+        const groupId = res.data[0].id;
+        const ses = await api.get(`/attendance/event-group/${groupId}`);
+        const now = Date.now();
+        const livePast = ses.data
+          .map((s) => ({
+            id: s.id,
+            eventName: res.data[0].name,
+            time: `${s.startTime} – ${s.endTime}`,
+            status: s.status,
+            attendance: String(s.attendance),
+            date: s.date,
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const upcoming = livePast
+          .filter((s) => new Date(s.date).getTime() > now)
+          .slice(0, 5);
+
+        setSessions(
+          livePast.map((s) => ({
+            ...s,
+            eventGroupId: groupId,
+          }))
+        );
+
+        setUpcomingSessions(
+          upcoming.map((s) => ({
+            id: s.id,
+            eventName: s.eventName,
+            time: s.time,
+          }))
+        );
+      }
+    })();
+  }, []);
+
+  const totals = useMemo(() => {
+    const eventGroupsCount = groups.length;
+    const totalSessions = groups.reduce(
+      (sum, g) => sum + (g.sessionsCount || 0),
+      0
+    );
+
+    const totalAttendees = groups.reduce(
+      (sum, g) => sum + (g.attendanceTotal || 0),
+      0
+    );
+
+    return { eventGroupsCount, totalSessions, totalAttendees };
+  }, [groups]);
 
   return (
     <div className={styles.content}>
@@ -74,51 +93,45 @@ function Dashboard() {
       {flashMessage && (
         <div className={styles.flashMessage}>{flashMessage}</div>
       )}
+
       <div className={styles.container}>
         <div className={styles.heading}>
-          <h1>Welcome back, Alexandra!</h1>
-          <p className="grey-text">Here's what's happening today</p>
+          <h1>Welcome back!</h1>
+          <p className="grey-text">Here's what's happening</p>
         </div>
+
         <div className={styles.firstRow}>
           <div className={`${styles.hide} ${styles.buttons}`}>
             <Button
               text="Create new event group"
               onClick={() => navigate("/create")}
-            ></Button>
+            />
             <Button
               text="Event groups"
               onClick={() => navigate("/event-groups")}
-            ></Button>
+            />
           </div>
-          <DashboardSmallCard
-            Icon={CheckedIcon}
-            title="Active Events"
-            heading="1 event"
-            text={
-              <>
-                currently <span id="open">open</span>
-              </>
-            }
-          />
+
           <DashboardSmallCard
             Icon={CalendarIcon}
-            title="Today's Sessions"
-            heading="2 sessions"
-            text="left"
+            title="Total Sessions"
+            heading={`${totals.totalSessions}`}
+            text="planned"
           />
           <DashboardSmallCard
             Icon={PeopleIcon}
-            title="Total Participants"
-            heading="169 check-ins"
-            text="today"
+            title="Participants"
+            heading={`${totals.totalAttendees} check-ins`}
+            text="overall"
           />
           <DashboardSmallCard
             Icon={BooksIcon}
             title="Event Groups"
-            heading="7 groups"
+            heading={`${totals.eventGroupsCount} groups`}
             text="ongoing"
           />
         </div>
+
         <div className={styles.secondRow}>
           <DashboardBigCard sessions={sessions} />
           <DashboardMediumCard sessions={upcomingSessions} />
